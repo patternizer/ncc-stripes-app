@@ -46,13 +46,14 @@ def set_threshold(x,y,threshold):
     return xv,yv
 
 
-server = Flask(__name__)
 
 #https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_stylesheets = [dbc.themes.DARKLY]
 #external_stylesheets = [dbc.themes.SPACELAB]
 app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
+server = app.server
+#server = Flask(__name__)
 
 app.layout = html.Div([
 

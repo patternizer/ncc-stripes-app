@@ -1,0 +1,10 @@
+/*
+ * Copyright (C) 2023, Michael Taylor
+ *
+ * The code is distributed under terms and conditions of the Attribution 4.0 International (CC BY 4.0) license:
+ * https://creativecommons.org/licenses/by/4.0/. 
+ * 
+ * This research code uses online palaeoclimate and proxy reconstructed global mean temperature data from PAGES2K, 
+ * HadCRUT5 and includes projections I computed with the FaIR simple climate model v1.6.3.
+*/
+

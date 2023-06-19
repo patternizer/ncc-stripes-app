@@ -56,7 +56,7 @@ server = app.server
 #server = Flask(__name__)
 
 app.layout = html.Div([
-
+        
     html.H3("Global Temperature Anomaly Timeseries: 65.5 Myr BCE to 2200 CE"),                                            
 
     html.Br(),
@@ -104,9 +104,32 @@ app.layout = html.Div([
 
     html.Div([
         html.H6(['Michael Taylor, CRU/UEA ', html.A('@climatetinker', href='https://twitter.com/climatetinker'), '' ]),                
-    ], style={'marginLeft': 1400, 'marginTop': 20})
+    ], style={'marginLeft': 1400, 'marginTop': 20, 'marginBottom': 20}),
 
-])
+    html.Div([
+        html.Br(),
+        html.H2([html.A('Climate Mural for our Times', href='https://crudata.uea.ac.uk/cru/climate-mural/',style={'color':'black', 'text-decoration':'none'})]),
+   ],style={'background-image': 'url(/assets/mural-full.jpg)',
+#    ],style={'background-image': 'url(/assets/stripes-cenozoic.jpg)',
+#           'background-size': '100%',
+           'background-size': 'cover',
+           'position': 'fixed',
+           'width': '100%',
+           'height': '100%',           
+           'textAlign': 'center',
+           }),
+
+])    
+                                   
+#],    
+#style={'background-image': 'url(/assets/mural-full.jpg)',
+#       'background-size': '100%',
+#       'background-size': 'cover',
+#       'position': 'fixed',
+#           'width': '100%',
+#           'height': '100%',           
+#           }),
+#)
 
 @app.callback(
     Output("graph", "figure"),

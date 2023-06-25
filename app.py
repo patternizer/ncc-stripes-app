@@ -45,8 +45,6 @@ def set_threshold(x,y,threshold):
 
     return xv,yv
 
-
-
 #https://dash-bootstrap-components.opensource.faculty.ai/docs/themes/
 #external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_stylesheets = [dbc.themes.DARKLY]
@@ -87,7 +85,7 @@ app.layout = html.Div([
                 html.H6("Choose your Epoch"),
                 dcc.RadioItems(
                     id="epoch",
-                    options=["Age of Mammals", "Interglacials", "Holocene", "Instrumental", "Future"],
+                    options=["Age of Mammals", "Interglacials", "Holocene", "Common Era", "Instrumental", "Future"],
                     value="Age of Mammals",
                     inline=True,
                     labelStyle = {'display': 'flex'},
@@ -153,13 +151,17 @@ def update_graph(value_ssp,value_epoch):
     if value_epoch == "Age of Mammals":
         df = df[ df.Year <= 2023 ]        
     elif value_epoch == "Interglacials":
-        df = df[ (df.Year >= -500000) & (df.Year <= (2023-11700))]
+#        df = df[ (df.Year >= -500000) & (df.Year <= (2023-11700))]
+        df = df[ (df.Year >= -500000) & (df.Year <= 2023)]
     elif value_epoch == "Holocene":
         df = df[ (df.Year > (2023-11700)) & (df.Year <= 2023)]
+    elif value_epoch == "Common Era":
+        df = df[ (df.Year > 0) & (df.Year <= 2023)]
     elif value_epoch == "Instrumental":
         df = df[ (df.Year >= 1850) & (df.Year <= 2023)]
     elif value_epoch == "Future":
-        df = df[df.Year >= 2023]
+#        df = df[df.Year > 2023]
+        df = df[df.Year > 1850]
         
     df = df.reset_index(drop=True)
     x = df['Year'].values
@@ -176,6 +178,11 @@ def update_graph(value_ssp,value_epoch):
     y3[(y3 < limits[0]) | (y3 > limits[1])] = np.nan    # i.e. plot 0 to 1.5
     y4[y4 > limits[0]] = np.nan                         # i.e. plot < 0
                 
+    p_025 = df['p_025'].values
+    p_975 = df['p_975'].values				
+    df['p_025'][df.Year <= 2023] = np.nan
+    df['p_975'][df.Year <= 2023] = np.nan
+                
     fig = go.Figure([
         
 #        go.Scatter(x=x, y=limits[1]*np.ones_like(x), opacity=0, line_width=0, showlegend=False),
@@ -188,6 +195,9 @@ def update_graph(value_ssp,value_epoch):
 #        go.Scatter(x=x_mod, y=y4, fill="tozeroy", opacity=0.5, connectgaps=True, mode='lines', line_color='blue'),
 
 #        go.Line(x=x_mod, y=y1, fill="none", opacity=0.5, marker = dict(size = 5, color = 'indigo', symbol = 'circle-open', line=dict(width=2)), connectgaps=False, mode='lines+markers', line_color='indigo', name='> 2°C'),
+	
+        go.Line(x=x, y=p_025, fill="none", opacity=0.1, connectgaps=False, mode='lines', line=dict(width=0.5), line_color='lightgrey', showlegend=False),
+        go.Line(x=x, y=p_975, fill="tonexty", opacity=0.1, connectgaps=False, mode='lines', line=dict(width=0.5), line_color='lightgrey', name='95% c.i.'),
         go.Line(x=x_mod, y=y1, fill="none", opacity=1, connectgaps=False, mode='lines', line=dict(width=3), line_color='indigo', name='> 2°C'),
         go.Line(x=x_mod, y=y2, fill="none", opacity=1, connectgaps=False, mode='lines', line=dict(width=3), line_color='red', name='1.5-2°C'),
         go.Line(x=x_mod, y=y3, fill="none", opacity=1, connectgaps=False, mode='lines', line=dict(width=3), line_color='orange', name='0-1.5°C'),

@@ -1,4 +1,4 @@
-![image](https://github.com/patternizer/ncc-stripes-app/blob/main/PLOTS/mural-app-ssp370-climate-analogues.png)
+![image](https://github.com/patternizer/ncc-stripes-app/blob/main/PLOTS/mural-app-climate-analogues.png)
 
 # ncc-stripes-app
 

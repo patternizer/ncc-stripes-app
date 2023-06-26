@@ -22,12 +22,6 @@ from matplotlib import image
 
 #------------------------------------------------------------------------------
 
-#ssp119 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP119.csv' ).reset_index(drop=True)
-#ssp126 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP126.csv' ).reset_index(drop=True)
-#ssp245 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP245.csv' ).reset_index(drop=True)
-#ssp370 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP370.csv' ).reset_index(drop=True)
-#ssp585 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP585.csv' ).reset_index(drop=True)
-
 ssp119 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP119.csv' ).reset_index(drop=True)
 ssp126 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP126.csv' ).reset_index(drop=True)
 ssp245 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP245.csv' ).reset_index(drop=True)

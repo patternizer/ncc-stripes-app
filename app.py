@@ -22,11 +22,17 @@ from matplotlib import image
 
 #------------------------------------------------------------------------------
 
-ssp119 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP119.csv' ).reset_index(drop=True)
-ssp126 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP126.csv' ).reset_index(drop=True)
-ssp245 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP245.csv' ).reset_index(drop=True)
-ssp370 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP370.csv' ).reset_index(drop=True)
-ssp585 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP585.csv' ).reset_index(drop=True)
+#ssp119 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP119.csv' ).reset_index(drop=True)
+#ssp126 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP126.csv' ).reset_index(drop=True)
+#ssp245 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP245.csv' ).reset_index(drop=True)
+#ssp370 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP370.csv' ).reset_index(drop=True)
+#ssp585 = pd.read_csv( 'OUT/ncc_data_baseline_1961_1990_SSP585.csv' ).reset_index(drop=True)
+
+ssp119 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP119.csv' ).reset_index(drop=True)
+ssp126 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP126.csv' ).reset_index(drop=True)
+ssp245 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP245.csv' ).reset_index(drop=True)
+ssp370 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP370.csv' ).reset_index(drop=True)
+ssp585 = pd.read_csv( 'OUT/ncc_data_baseline_1851_1900_SSP585.csv' ).reset_index(drop=True)
 
 def set_threshold(x,y,threshold):
     xv=[]
@@ -218,7 +224,8 @@ def update_graph(value_ssp,value_epoch):
     fig.update_layout(autosize = True)
     fig.update_layout(legend = dict(orientation="h", x=0.4, y=1, font = dict(size = 16, color = "white")))            
     fig.update_layout(paper_bgcolor = 'black', plot_bgcolor = 'black' )
-    fig.update_yaxes(title='Anomaly (from 1961-1990), °C', title_font=dict(size=20), title_font_color="white")    
+#    fig.update_yaxes(title='Anomaly (from 1961-1990), °C', title_font=dict(size=20), title_font_color="white")    
+    fig.update_yaxes(title='Anomaly (from 1851-1900), °C', title_font=dict(size=20), title_font_color="white")    
     fig.update_xaxes(showgrid=False, zeroline = False)
     fig.update_yaxes(showgrid=False, zeroline = False)
     fig.update_layout(margin=dict(l=50, r=50, t=50, b=50))
